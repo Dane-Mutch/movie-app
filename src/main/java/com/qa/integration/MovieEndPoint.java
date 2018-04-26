@@ -20,10 +20,11 @@ public class MovieEndPoint {
 	@Produces({"application/json"})
 	public String getAllMovies() {
 		return service.getAllMovies();
+	}
 		
 	@GET
 	@Path("/json/{id}")
-	@Produces({"application/json"})
+	@Produces({ "application/json" })
 	public String getAMovie(@PathParam("id") Long id) {
 		return service.getAMovie(id);
 	}

@@ -31,14 +31,13 @@ public class MovieDBRepository implements IMovieRepository{
 		
 	}
 	
-	@Override
 	public String getAMovie(Long id) {
 		LOGGER.info("MovieDBRepository getAMovie");
 		Movie aMovie = em.find(Movie.class, id);
-		if (aMovie != null); {
+		if (aMovie != null) {
 		return util.getJSONForObject(aMovie);
-		} else {
-		return "{\response\":\"movie not found\"}";
+		} else {	
+		return "{\"response\":\"movie not found\"}";
 		}
 		
 	}
