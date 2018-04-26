@@ -20,9 +20,20 @@ public class MovieService implements IMovieService {
 	}
 
 	@Override
-	public String createMovie(String movie) {
-		// TODO Auto-generated method stub
-		return null;
+	public String createMovie(String movieJSON) {
+		return repo.createMovie(movieJSON);
 	}
+
+	@Override
+	public String deleteMovie(Long id) {
+		return repo.deleteMovie(id);
+	}
+
+	@Override
+	public String updateMovie(Long id) {
+		return repo.updateMovie(id);
+	}
+	
+	
 
 }

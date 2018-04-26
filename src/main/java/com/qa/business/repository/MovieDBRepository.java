@@ -53,5 +53,34 @@ public class MovieDBRepository implements IMovieRepository{
 		em.persist(newMovie);
 		return "{\"response\":\"movie successfully added\"}";
 	}
+	
+	@Override
+	@Transactional(REQUIRED)
+	public String deleteMovie(Long id) {
+		LOGGER.info("MovieDBRepository deleteMovie");
+		Movie aMovie = em.find(Movie.class, id);
+		if (aMovie != null) {
+			em.remove(aMovie);
+			return "{\"response\":\"movie successfully added\"}";
+		} else {
+			return "{\"response\":\"movie does not EXIST\"}";
+		}
+		
+		
+	}
+	
+	@Override
+	@Transactional(REQUIRED)
+	public String updateMovie(Long id) {
+		LOGGER.info("MovieDBRepository updateMovie");
+		Movie originalMovie = em.find(Movie.class, id);
+		if (originalMovie != null) {
+		originalMovie.setRating("Seriously Terrifying");
+		return "{\"response\":\"movie successfully updated\"}";
+			} else {
+		return "{\"response\":\"movie does not EXIST\"}";	
+		}
+		
+	}
 
 }
