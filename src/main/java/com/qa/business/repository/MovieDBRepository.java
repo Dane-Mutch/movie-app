@@ -28,6 +28,19 @@ public class MovieDBRepository implements IMovieRepository{
 		Query query = em.createQuery("Select m FROM Movie m");
 		Collection<Movie> movies = (Collection<Movie>) query.getResultList();
 		return util.getJSONForObject(movies);
+		
+	}
+	
+	@Override
+	public String getAMovie(Long id) {
+		LOGGER.info("MovieDBRepository getAMovie");
+		Movie aMovie = em.find(Movie.class, id);
+		if (aMovie != null); {
+		return util.getJSONForObject(aMovie);
+		} else {
+		return "{\response\":\"movie not found\"}";
+		}
+		
 	}
 
 }
